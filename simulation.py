@@ -5,10 +5,10 @@ def generate_random_data(height, width, count):
     x, y = zip(*[generate_img_and_mask(height, width) for i in range(0, count)])
 
     X = np.asarray(x) * 255
-    X = X.repeat(3, axis=1).transpose([0, 2, 3, 1]).astype(np.uint8)
+    X = X.repeat(3, axis=1).astype(np.uint8) # .transpose([0, 2, 3, 1])
     Y = np.asarray(y)
 
-    return X, Y
+    return X, Y # (3, 192, 192, 3)(3, 6, 192, 192)
 
 def generate_img_and_mask(height, width):
     shape = (height, width)
